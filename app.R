@@ -103,7 +103,8 @@ If multiple seasons are selected, each QB is a single dot (aggregated across sea
 server <- function(input, output, session){
   
   #### Data Load ####
-  pbp_all <- read_csv("data/condensed.csv", show_col_types = FALSE)
+  data_url <- "https://raw.githubusercontent.com/EthanSterbis/qbNegativePlaysAnalyzer/master/data/condensed.csv"
+  pbp_all <- readr::read_csv(data_url, show_col_types = FALSE)
   teams <- nflreadr::load_teams() %>% select(team_abbr, team_color, team_color2)
   
   fmt_vec   <- function(v) paste0(unique(v), collapse = ",")
